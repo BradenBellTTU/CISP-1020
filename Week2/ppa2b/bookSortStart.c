@@ -69,11 +69,11 @@ int readBooks( book_t* a ) {
  */
 // ADD CODE HERE for the initSortingArray that initializes the array of pointers
 
-
-
-
-
-
+void initSortingArray(book_t* a, book_t** t, int n ) {
+   for (int i = 0; i < n; i++) {
+      t[i] = &a[i];
+   }
+}
 
 
 
@@ -101,22 +101,20 @@ void printBooks( book_t** aPtr, int n ) {
 //  NOT the array of books by book title
 // MAKE SURE TO CALL THE swap FUNCTION!
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void sortBooks(book_t** bookPtrs, int n) {
+   int i = 0;
+   int minI = 0;
+   int top = 0;
+   for (top = 0; top < (n - 1); top++) {
+      minI = top;
+      for (int i = (top + 1); i < n; i++) {
+         if(strcmp(bookPtrs[i]->title, bookPtrs[minI]->title) < 0) {
+            minI = i;
+         }
+      }
+   }
+   swap(&bookPtrs[minI], &bookPtrs[top]);
+}
 
 
 /* swap: swaps pointers to book_t array elements
@@ -126,3 +124,8 @@ void printBooks( book_t** aPtr, int n ) {
  * Returns: nothing
  */
 // ADD CODE HERE TO swap the pointers to books in the array of pointers
+void swap(book_t** b1 , book_t** b2) {
+   book_t* temp = *b1;
+   *b1 = *b2;
+   *b2 = temp;
+}
