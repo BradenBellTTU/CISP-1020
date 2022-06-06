@@ -1,0 +1,24 @@
+UI Web Developer
+8
+Vue, Angular, or React
+D3
+Javascript
+Java
+Python
+Node.js
+Git
+Relational database
+83200
+ITR
+Front-End Developer
+8
+Agile
+HTML5
+CSS3
+Javascript
+Angular
+NodeJS
+AJAX
+Git, Bitbucket, or Mercurial
+0
+CGI Group, Inc.
