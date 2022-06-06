@@ -112,8 +112,9 @@ void sortBooks(book_t** bookPtrs, int n) {
             minI = i;
          }
       }
+      swap(&bookPtrs[minI], &bookPtrs[top]);
    }
-   swap(&bookPtrs[minI], &bookPtrs[top]);
+   
 }
 
 
