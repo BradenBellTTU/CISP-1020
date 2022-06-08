@@ -20,7 +20,13 @@
  * Returns: index where key found or -1
  */
 int linearSearch( double a[], int n, double k, int *iPtr, int *cPtr ) {
-// ADD CODE HERE
+    for (int i = 0; i < n; i++) {
+        ++(*iPtr);
+        if (++(*cPtr) && a[i] == k) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 /* iterativeBSearch uses an iterative binary search to find key and 
@@ -37,8 +43,25 @@ int linearSearch( double a[], int n, double k, int *iPtr, int *cPtr ) {
  * Returns: index where key found or -1
  */
 int iterativeBSearch( double a[], int n, double k, int *iPtr, int *cPtr ) {
-// ADD CODE HERE
+    int low = 0;
+    int high = (n - 1);
+    while(low <= high) {
+        ++(*iPtr);
+        int mid = (low + high) / 2;
 
+        if (++(*cPtr) && k == a[mid]) {
+            return mid;
+        }
+
+        else if (++(*cPtr) && k > a[mid]) {
+            high = mid - 1;
+        }
+
+        else {
+            low = mid + 1;
+        }
+    }
+    return -1;
 }
 
 /* recursiveBSearch uses a recursive binary search to find key and 
@@ -56,7 +79,24 @@ int iterativeBSearch( double a[], int n, double k, int *iPtr, int *cPtr ) {
  * Returns: index where key found or -1
  */
 int recursiveBSearch( double a[], int b, int t,  double k, int *iPtr, int *cPtr )  {
-// ADD CODE HERE
+    int mid = (b + t) / 2;
+    ++(*iPtr);
+    if (++(*cPtr) && k == a[mid]) { //Found it
+        return mid;
+    }
 
+    else if (++(*cPtr) && b > t) { //Never going to find it
+        return -1;
+    }
+
+    else if (++(*cPtr) && k  < a[mid]) {
+        t = mid - 1;
+        return recursiveBSearch(a, b, t, k, iPtr, cPtr);
+    }
+
+    else {
+        b = mid + 1;
+        return recursiveBSearch(a, b, t, k, iPtr, cPtr);
+    }
 }
 
