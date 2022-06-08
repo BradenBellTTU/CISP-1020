@@ -38,6 +38,7 @@ int menu();
 void searchByTitle(Job*, int);
 void searchBySkill(Job*, int);
 void selectionSort(Job*, int);
+void toLowerCase(char*);
 
 
 
@@ -214,12 +215,24 @@ void searchByTitle(Job* jobsArray, int numJobs) {
 	char* pch;
 	char search[MAX_STRING_LENGTH];
 	bool searchFound = false;
+	char temp1[MAX_STRING_LENGTH];
+	char temp2[MAX_STRING_LENGTH];
 
 	cout << "Job name: ";
 	cin.ignore();
 	cin.getline(search, MAX_STRING_LENGTH);
 	
 	cout << "\nJob Title\t\t\t\t\tSalary\t\t\tCompany\n" << line << '\n';
+	for (int i = 0; i < numJobs; i++) {
+		strcpy(temp1, jobsArray[i].jobTitle);
+		strcpy(temp2, search);
+		tolowercase(temp1);
+		tolowercase(temp2);
+		if (strcmp(temp1, temp2) == 0) {
+			displayJobs(jobsArray, numJobs, i);
+		}	
+	}
+	/*
 	for (int i = 0; i < numJobs; i++) {
 		pch = strstr((jobsArray[i].jobTitle), (search));
 		if (pch != NULL) {
@@ -228,12 +241,10 @@ void searchByTitle(Job* jobsArray, int numJobs) {
 			displayJobs(jobsArray, numJobs, i);
 		}
 	}
+	*/
 	if(!searchFound) {
 		cout << "\nThat search did not return any results.\n";
 	}
-
-	cout << "Press enter to continue...";
-	cin.ignore();
 }
 
 void searchBySkill(Job* jobsArray, int numJobs) {
@@ -259,10 +270,6 @@ void searchBySkill(Job* jobsArray, int numJobs) {
 	if(!searchFound) {
 	cout << "\nThat search did not return any results.\n";
 	}
-
-	
-	cout << "Press enter to continue...";
-	cin.ignore();
 }
 
 
@@ -320,3 +327,20 @@ void displayJobs(Job* jobsArray, int numJobs, int index) {
 		}
 	}
 }
+
+void tolowercase(char s[]) {
+	for (int i = 0; s[i] != '\0'; i++ ) {
+		s[i] = tolower(s[i]);
+	}
+}
+
+/*
+char temp1[MAX_STRING_LENGTH], temp2[MAX_STRING_LENGTH];
+
+strcpy(temp1, jobs[i].jobTitle);
+strcpy(temp2, userInput);
+tolowercase(temp1, temp2)
+if (strcmp(temp1, temp2) == 0) {
+	MATCH
+}
+*/
