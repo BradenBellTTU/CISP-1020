@@ -11,7 +11,10 @@
  * Parameter s pointer to the stack
  * Returns nothing
  */
-// ADD CODE HERE
+//ADD CODE HERE
+void initStack(Stack *s) {
+   s.Stack.StackItem[0] = -1;
+}
 
 /* push: pushes an item on the stack if it isn't full
  * Parameters:
@@ -20,6 +23,9 @@
  * Returns true if push successful, false otherwise 
  */
 // ADD CODE HERE
+int push(Stack* s, StackItem i) {
+
+}
 
 /* pop: pops an item off the stack if it isn't empty
  * Parameters 
@@ -29,12 +35,18 @@
  * Returns true if an item was popped 
  */
 // ADD CODE HERE
+int pop(Stack* s, StackItem* i) {
+
+}
 
 /* isEmpty: returns true if stack is empty
  * Parameter s the stack
  * Returns: true if stack is empty
  */
 // ADD CODE HERE
+int isEmpty(Stack) {
+   
+}
 
 /* printStack: prints the stack
  * Parameter s the stack
