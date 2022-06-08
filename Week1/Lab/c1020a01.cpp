@@ -78,12 +78,10 @@ int main() {
 				menuLoop = false;
 				break;
 			
-			case 4:
-				displayJobs(jobsArray, numJobs);
-				break;
-			
 			default:
-				cout << "\n\nInvalid option. Please try again.\n";
+				cout << "Critical error, please contact the administrator.\n";
+				cout << "Exiting program.\n";
+				return 1;
 				break;
 		
 		}
@@ -114,7 +112,7 @@ int readJobs(Job* jobsArray) {
     cin >> inFileName;
     
     //Open file
-    inFileStream.open(inFileName);
+    inFileStream.open(inFileName.c_str());
 
     //Verify that the file opened correctly
     if(inFileStream.fail()) {
@@ -168,43 +166,25 @@ int menu() {
 	cout << "2. Search for job by skill\n";
 	cout << "3. Quit\n\n";
 
-	//If debug mode is active, then print the main menu along with the debugging menu
-	//And change input validation to debug mode
-	if (debug) {
-		cout << "Debug Menu Active\n";
-		cout << "4. Print jobsArray[]\n";
+	//Input with input checking
+	cout << "Option> ";
+	cin >> userInput;
+	while(cin.fail() || !(userInput >= 1 && userInput <= 3)) {
+		cin.clear();
+		cin.ignore(255, '\n');
+		cout << "Unexpected input. Please try again.\n";
+		cout << "1. Search for job by title\n";
+		cout << "2. Search for job by skill\n";
+		cout << "3. Quit\n\n";		
 		cout << "Option> ";
 		cin >> userInput;
-		while(cin.fail() || (userInput < 1 && userInput > 4)) {
-			cout << "1. Search for job by title\n";
-			cout << "2. Search for job by skill\n";
-			cout << "3. Quit\n\n";
-			cout << "Unexpected input. Please try again.\n";
-			cout << "Option> ";
-			cin >> userInput;
-		}
-	}
-	
-	//If debug mode is not active, then don't print debug menu and set input validation
-	//to user mode
-	else{
-		cout << "Option> ";
-		cin >> userInput;
-		while(cin.fail() || (userInput < 1 && userInput > 3)) {
-			cout << "1. Search for job by title\n";
-			cout << "2. Search for job by skill\n";
-			cout << "3. Quit\n\n";		
-			cout << "Unexpected input. Please try again.\n";
-			cout << "Option> ";
-			cin >> userInput;
-		}
 	}
 	
 	return userInput;
 }
 
 /*
-searchByTitle: Searches jobsArray.jobTitle for jobs by user input
+searchByTitle: Searches the jobs array by job title and prints results if any are found
 Parameters:
 	jobsArray: array of job structures
 	numJobs: the number of jobs in the array
@@ -221,46 +201,52 @@ void searchByTitle(Job* jobsArray, int numJobs) {
 	cout << "Job name: ";
 	cin.ignore();
 	cin.getline(search, MAX_STRING_LENGTH);
-	
+	strcpy(temp2, search);
+	toLowerCase(temp2);
+	cout << "lower test:" << temp2 << '\n';
+	strcpy(temp1, jobsArray[0].jobTitle);
 	cout << "\nJob Title\t\t\t\t\tSalary\t\t\tCompany\n" << line << '\n';
 	for (int i = 0; i < numJobs; i++) {
 		strcpy(temp1, jobsArray[i].jobTitle);
-		strcpy(temp2, search);
-		tolowercase(temp1);
-		tolowercase(temp2);
-		if (strcmp(temp1, temp2) == 0) {
+		toLowerCase(temp1);
+		if (strstr(temp1, temp2) != NULL) {
+			searchFound = true;
 			displayJobs(jobsArray, numJobs, i);
 		}	
 	}
-	/*
-	for (int i = 0; i < numJobs; i++) {
-		pch = strstr((jobsArray[i].jobTitle), (search));
-		if (pch != NULL) {
-			searchFound = true;
-			
-			displayJobs(jobsArray, numJobs, i);
-		}
-	}
-	*/
+
 	if(!searchFound) {
 		cout << "\nThat search did not return any results.\n";
 	}
 }
 
+/*
+searchByTitle: Searches the jobs array by skill and prints results if any are found
+Parameters:
+	jobsArray: array of job structures
+	numJobs: the number of jobs in the array
+Pre-condition: None
+Return: None
+*/
 void searchBySkill(Job* jobsArray, int numJobs) {
 	char* pch;
 	char search[MAX_STRING_LENGTH];
 	bool searchFound = false;
+	char temp1[MAX_STRING_LENGTH];
+	char temp2[MAX_STRING_LENGTH];
 
 	cout << "Job skill: ";
 	cin.ignore();
 	cin.getline(search, MAX_STRING_LENGTH);
+	strcpy(temp2, search);
+	toLowerCase(temp2);
 
 	cout << "\nJob Title\t\t\t\t\tSalary\t\t\tCompany\n" << line << '\n';
 	for (int i = 0; i < numJobs; i++) {
 		for (int j = 0; j < jobsArray[i].numSkills; j++) {
-			pch = strstr((jobsArray[i].skills[j]), (search));
-			if (pch != NULL) {
+			strcpy(temp1, jobsArray[i].skills[j]);
+			toLowerCase(temp1);
+			if (strstr(temp1, temp2) != NULL) {
 				searchFound = true;
 				displayJobs(jobsArray, numJobs, i);
 			}
@@ -328,19 +314,15 @@ void displayJobs(Job* jobsArray, int numJobs, int index) {
 	}
 }
 
-void tolowercase(char s[]) {
+/*
+toLowerCase: Converts the cstring passed to it to all lowercase
+Parameters:
+	char s[]: the cstring to be converted
+Pre-condition: None
+Return: None
+*/
+void toLowerCase(char s[]) {
 	for (int i = 0; s[i] != '\0'; i++ ) {
 		s[i] = tolower(s[i]);
 	}
 }
-
-/*
-char temp1[MAX_STRING_LENGTH], temp2[MAX_STRING_LENGTH];
-
-strcpy(temp1, jobs[i].jobTitle);
-strcpy(temp2, userInput);
-tolowercase(temp1, temp2)
-if (strcmp(temp1, temp2) == 0) {
-	MATCH
-}
-*/
