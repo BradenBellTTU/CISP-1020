@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun 10 08:19:36 2022
+# Make data base, printed on Fri Jun 10 08:33:39 2022
 
 # Variables
 
@@ -189,6 +189,7 @@ QT_ACCESSIBILITY = 1
 # environment
 DEFAULTS_PATH = /usr/share/gconf/cinnamon.default.path
 # default
+ 
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
@@ -280,7 +281,8 @@ GNUmakefile:
 
 # strcache performance: lookups = 19 / hit rate = 15%
 # hash-table stats:
+ 
 # Load=16/8192=0%, Rehash=0, Collisions=1/19=5%
-# Finished Make data base on Fri Jun 10 08:19:36 2022
+# Finished Make data base on Fri Jun 10 08:33:39 2022
 
  
