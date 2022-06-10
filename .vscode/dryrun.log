@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/braden/Desktop/CISP 1020'
+make: Leaving directory '/home/braden/Desktop/CISP 1020'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
