@@ -116,8 +116,9 @@ int readJobs(Job* jobsArray) {
 
     //Verify that the file opened correctly
     if(inFileStream.fail()) {
-        cout << "Input file " << inFileName << " does not exist.\n";
+        cout << "Input file \"" << inFileName << "\" does not exist.\n";
 		cout << "Please contact the administrator.\n";
+		cout << "Thank you for using Jobs.com\n";
 		return 0;
 	}
 
