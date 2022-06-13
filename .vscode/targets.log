@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun 10 08:33:39 2022
+# Make data base, printed on Mon Jun 13 08:08:23 2022
 
 # Variables
 
@@ -67,11 +67,11 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-558b2d16-6055-4e2d-ab6d-6cbcf1538797.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-36b0a808-7884-4156-a8b5-778c7984f06b.sock
 # environment
 VSCODE_CWD = /home/braden
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -79,7 +79,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/Minty:@/tmp/.ICE-unix/160559,unix/Minty:/tmp/.ICE-unix/160559
+SESSION_MANAGER = local/Minty:@/tmp/.ICE-unix/3880,unix/Minty:/tmp/.ICE-unix/3880
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -95,7 +95,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 656336
+GIO_LAUNCHED_DESKTOP_FILE_PID = 189399
 # automatic
 %F = $(notdir $%)
 # environment
@@ -111,12 +111,13 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 160630
+SSH_AGENT_PID = 3951
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
 GTK_MODULES = gail:atk-bridge
 # environment
+ 
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /home/braden
@@ -127,7 +128,7 @@ VSCODE_CODE_CACHE_PATH = /home/braden/.config/Code/CachedData/4af164ea3a06f701fe
 # environment
 LOGNAME = braden
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 J2SDKDIR = /usr/lib/jvm/java-17-oracle
 # environment
@@ -149,7 +150,7 @@ SHLVL = 1
 # environment
 JAVA_HOME = /usr/lib/jvm/java-17-oracle
 # environment
-XDG_SESSION_ID = c4
+XDG_SESSION_ID = c2
 # environment
 USER = braden
 # makefile
@@ -189,7 +190,6 @@ QT_ACCESSIBILITY = 1
 # environment
 DEFAULTS_PATH = /usr/share/gconf/cinnamon.default.path
 # default
- 
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
@@ -214,7 +214,7 @@ DERBY_HOME = /usr/lib/jvm/java-17-oracle/db
 # environment
 LANG = C
 # environment
-VSCODE_PID = 656336
+VSCODE_PID = 189399
 # variable set hash-table stats:
 # Load=101/1024=10%, Rehash=0, Collisions=6/123=5%
 
@@ -224,9 +224,9 @@ VSCODE_PID = 656336
 
 # Directories
 
-# . (device 66306, inode 19365973): 8 files, no impossibilities.
+# . (device 66306, inode 19365973): 9 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -276,13 +276,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 16 / storage = 125 B / avg = 7 B
-# current buf: size = 8162 B / used = 125 B / count = 16 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 17 / storage = 131 B / avg = 7 B
+# current buf: size = 8162 B / used = 131 B / count = 17 / avg = 7 B
 
-# strcache performance: lookups = 19 / hit rate = 15%
+# strcache performance: lookups = 20 / hit rate = 15%
 # hash-table stats:
- 
-# Load=16/8192=0%, Rehash=0, Collisions=1/19=5%
-# Finished Make data base on Fri Jun 10 08:33:39 2022
+# Load=17/8192=0%, Rehash=0, Collisions=1/20=5%
+# Finished Make data base on Mon Jun 13 08:08:23 2022
 
  
