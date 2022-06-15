@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jun 13 08:08:23 2022
+# Make data base, printed on Wed Jun 15 06:58:04 2022
 
 # Variables
 
@@ -67,7 +67,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-36b0a808-7884-4156-a8b5-778c7984f06b.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-71f2e302-dacc-412b-a332-9cd92e9c7f79.sock
 # environment
 VSCODE_CWD = /home/braden
 # environment
@@ -95,7 +95,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 189399
+GIO_LAUNCHED_DESKTOP_FILE_PID = 295789
 # automatic
 %F = $(notdir $%)
 # environment
@@ -117,7 +117,6 @@ ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
 GTK_MODULES = gail:atk-bridge
 # environment
- 
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /home/braden
@@ -214,7 +213,7 @@ DERBY_HOME = /usr/lib/jvm/java-17-oracle/db
 # environment
 LANG = C
 # environment
-VSCODE_PID = 189399
+VSCODE_PID = 295789
 # variable set hash-table stats:
 # Load=101/1024=10%, Rehash=0, Collisions=6/123=5%
 
@@ -282,6 +281,6 @@ GNUmakefile:
 # strcache performance: lookups = 20 / hit rate = 15%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=1/20=5%
-# Finished Make data base on Mon Jun 13 08:08:23 2022
+# Finished Make data base on Wed Jun 15 06:58:04 2022
 
  
