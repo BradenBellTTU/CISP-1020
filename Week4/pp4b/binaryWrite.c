@@ -13,7 +13,7 @@ typedef struct employee {
    double salary;
 } Employee;
 
-int main() {
+int main(int argc, char *argv[]) {
    Employee e[5] = { { "Jack", "Dorsey", 14, 0.0 }, 
                      { "Greta", "Thunberg", 17, 1234.56 },
                      { "Manjul", "Bhargava", 54, 13579.0 }, 

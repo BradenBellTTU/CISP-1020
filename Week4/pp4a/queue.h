@@ -1,5 +1,5 @@
-/* File:  mainStack.c
- * Author: Cindy Arnold
+/* File:  queue.h
+ * Author: Braden Bell
  * Description: header file for a circular queue
  */
 

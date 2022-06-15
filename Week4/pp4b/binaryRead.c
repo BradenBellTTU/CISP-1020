@@ -25,7 +25,8 @@ int main(int argc, char *argv[]) {
    if(argc == 2) {// if there is a filename argument
       inFileStream = fopen(argv[1], "rb");
       if (inFileStream != NULL) {//if file  open is successful, open binary file whose name retreived from command line for reading
-         //       ADD CODE HERE TO read 5 employees from the binary file
+         
+         //ADD CODE HERE TO read 5 employees from the binary file
          fread( &e[i], sizeof(Employee), 1, inFileStream);
          while(!feof(inFileStream)) {
             i++;
@@ -34,7 +35,7 @@ int main(int argc, char *argv[]) {
       }
    
    
-      //      ADD CODE HERE TO close the input file
+      //ADD CODE HERE TO close the input file
       fclose(inFileStream);
 
       // print employees read
