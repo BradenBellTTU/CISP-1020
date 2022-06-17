@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jun 15 06:58:04 2022
+# Make data base, printed on Fri Jun 17 07:01:25 2022
 
 # Variables
 
@@ -67,7 +67,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-71f2e302-dacc-412b-a332-9cd92e9c7f79.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b65e7799-a233-4a7b-b91a-e5d05fb1233d.sock
 # environment
 VSCODE_CWD = /home/braden
 # environment
@@ -79,7 +79,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/Minty:@/tmp/.ICE-unix/3880,unix/Minty:/tmp/.ICE-unix/3880
+SESSION_MANAGER = local/Minty:@/tmp/.ICE-unix/4086,unix/Minty:/tmp/.ICE-unix/4086
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -95,7 +95,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 295789
+GIO_LAUNCHED_DESKTOP_FILE_PID = 119077
 # automatic
 %F = $(notdir $%)
 # environment
@@ -111,7 +111,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 3951
+SSH_AGENT_PID = 4157
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -123,7 +123,7 @@ HOME = /home/braden
 # environment
 J2REDIR = /usr/lib/jvm/java-17-oracle
 # environment
-VSCODE_CODE_CACHE_PATH = /home/braden/.config/Code/CachedData/4af164ea3a06f701fe3e89a2bcbb421d2026b68f
+VSCODE_CODE_CACHE_PATH = /home/braden/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
 # environment
 LOGNAME = braden
 # environment
@@ -169,7 +169,7 @@ LANGUAGE = en_US
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-51873b8b-1.68.0-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-51873b8b-1.68.1-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -213,7 +213,7 @@ DERBY_HOME = /usr/lib/jvm/java-17-oracle/db
 # environment
 LANG = C
 # environment
-VSCODE_PID = 295789
+VSCODE_PID = 119077
 # variable set hash-table stats:
 # Load=101/1024=10%, Rehash=0, Collisions=6/123=5%
 
@@ -223,9 +223,9 @@ VSCODE_PID = 295789
 
 # Directories
 
-# . (device 66306, inode 19365973): 9 files, no impossibilities.
+# . (device 66306, inode 19365973): 10 files, no impossibilities.
 
-# 9 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -275,12 +275,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 17 / storage = 131 B / avg = 7 B
-# current buf: size = 8162 B / used = 131 B / count = 17 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 18 / storage = 137 B / avg = 7 B
+# current buf: size = 8162 B / used = 137 B / count = 18 / avg = 7 B
 
-# strcache performance: lookups = 20 / hit rate = 15%
+# strcache performance: lookups = 21 / hit rate = 14%
 # hash-table stats:
-# Load=17/8192=0%, Rehash=0, Collisions=1/20=5%
-# Finished Make data base on Wed Jun 15 06:58:04 2022
+# Load=18/8192=0%, Rehash=0, Collisions=1/21=5%
+# Finished Make data base on Fri Jun 17 07:01:25 2022
 
  
