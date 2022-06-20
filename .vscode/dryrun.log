@@ -1,4 +1,4 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory '/home/braden/Desktop/CISP 1020'
 make: Leaving directory '/home/braden/Desktop/CISP 1020'
  

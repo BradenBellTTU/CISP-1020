@@ -14,7 +14,8 @@ int main() {
    
    // init list to be a valid empty list
    createList( &list );
-   
+   printf("List made\n");
+
    // test initNode, insertNode, traverseStack
    for( i = 0; i < 4; i++ ) {
      printf( "Enter an int: " );
