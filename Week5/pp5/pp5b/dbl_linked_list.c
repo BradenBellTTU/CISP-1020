@@ -9,10 +9,6 @@ void createList(dbl_linked_list_t* listPtr) {
         listPtr -> headPtr = NULL;
         listPtr -> tailPtr = NULL;
     }
-
-    else {
-        printf("Failed to create list: parameter passed to function is NULL\n");
-    }
 }
 
 void insertNode(dbl_linked_list_t* listPtr, node_t* nPtr) {
@@ -35,10 +31,14 @@ void insertNode(dbl_linked_list_t* listPtr, node_t* nPtr) {
 
 node_t* popNode(dbl_linked_list_t* listPtr) {
     if(listPtr != NULL && listPtr -> headPtr != NULL) { //If the list is not empty and it was initialized
-        listPtr -> count--; //Decriment count
-        node_t* nodePtr = listPtr -> headPtr; //nodePtr = the node at the end of the list
-        listPtr -> headPtr = listPtr -> headPtr -> nextPtr; //Set headPtr to point to next in the list
-        if (listPtr != NULL) { //If the list is still not empty
+        listPtr -> count--; //A. Decriment count
+        node_t* nodePtr = listPtr -> headPtr; //B. nodePtr = the node at the end of the list
+        
+        
+        listPtr -> headPtr = listPtr -> headPtr -> nextPtr; //C. Set headPtr to point to next in the list
+        
+        
+        if (listPtr -> headPtr != NULL) { //If the list is still not empty
             listPtr -> headPtr -> prevPtr = NULL; //Set headPtr's previous pouinter to NULL
         }
 
@@ -64,22 +64,23 @@ void traverseStack(const dbl_linked_list_t* listPtr) {
             curPtr = curPtr -> nextPtr; //Update curPtr to point to the next node
         }
     }
-
-    else
-        printf("Error: traverseStack function was passed a NULL value"); //error message for debugging
 }
 
 node_t* dequeueNode(dbl_linked_list_t* listPtr) {
-    if(listPtr != NULL && listPtr -> tailPtr != NULL) { //If the list is not empty and it was initialized
-        listPtr -> count--; //Decriment count
-        node_t* nodePtr = listPtr -> tailPtr; //nodePtr = the node at the end of the list
-        listPtr -> tailPtr = listPtr -> tailPtr -> nextPtr; //Set tailPtr to point to next in the list
-        if (listPtr != NULL) { //If the list is still not empty
-            listPtr -> tailPtr -> prevPtr = NULL; //Set tailPtr's previous pouinter to NULL
+    if(listPtr != NULL && listPtr -> headPtr != NULL) { //If the list is not empty and it was initialized
+        listPtr -> count--; //A. Decriment count
+        node_t* nodePtr = listPtr -> tailPtr; //B. nodePtr = the node at the end of the list
+        
+        
+        listPtr -> tailPtr = listPtr -> tailPtr -> prevPtr; //C. Set headPtr to point to next in the list
+        
+        
+        if (listPtr -> tailPtr != NULL) { //If the list is still not empty
+            listPtr -> tailPtr -> nextPtr = NULL; //Set headPtr's previous pouinter to NULL
         }
 
         else { //If the list is empty:
-            listPtr -> tailPtr = NULL; //set tailPtr to NULL
+            listPtr -> headPtr = NULL; //set tailPtr to NULL
         }
 
         nodePtr -> prevPtr = NULL; //Set nodeptr's prev and next ptrs to NULL since the node's not in the list anymore
@@ -96,7 +97,7 @@ void traverseQueue(const dbl_linked_list_t* listPtr) {
     if (listPtr != NULL) { //If list has been initialized
         node_t* curPtr = listPtr -> tailPtr; //curPtr = list's tailPtr
         while(curPtr != NULL) { //While curPtr isn't NULL
-            printf("%d\n", curPtr -> i); //Print curPtr's data
+            printf("%d ", curPtr -> i); //Print curPtr's data
             curPtr = curPtr -> prevPtr; //Update curPtr to point to the next node
         }
     }
