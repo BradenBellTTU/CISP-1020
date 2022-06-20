@@ -2,7 +2,11 @@
 #include <stdlib.h>
 #include "dbl_linked_list.h"
 
-
+/* createList: initializes the doubly linked list
+ * Parameters:
+ *    listPtr - pointer to the list
+ * Returns: nothing 
+ */
 void createList(dbl_linked_list_t* listPtr) {
     if (listPtr != NULL) {
         listPtr -> count = 0;
@@ -11,6 +15,13 @@ void createList(dbl_linked_list_t* listPtr) {
     }
 }
 
+
+/* insertNode: Inserts a new node in the first slot of the doubly linked list
+ * Parameters:
+ *    listPtr - pointer to the list
+ *    nPtr - points to the node
+ * Returns: nothing 
+ */
 void insertNode(dbl_linked_list_t* listPtr, node_t* nPtr) {
     if (listPtr != NULL) {//Make sure the list has been created by createList
         listPtr -> count++;
@@ -29,6 +40,12 @@ void insertNode(dbl_linked_list_t* listPtr, node_t* nPtr) {
     }
 }
 
+
+/* popNode: pops the first node out of the doubly linked list
+ * Parameters:
+ *    listPtr - pointer to the list
+ * Returns: a pointer to the node that was popped
+ */
 node_t* popNode(dbl_linked_list_t* listPtr) {
     if(listPtr != NULL && listPtr -> headPtr != NULL) { //If the list is not empty and it was initialized
         listPtr -> count--; //A. Decriment count
@@ -56,6 +73,12 @@ node_t* popNode(dbl_linked_list_t* listPtr) {
         return NULL; //Return NULL
 }
 
+
+/* createList: Prints the data in the doublely linked list as if it were a list
+ * Parameters:
+ *    listPtr - pointer to the list
+ * Returns: nothing 
+ */
 void traverseStack(const dbl_linked_list_t* listPtr) {
     if (listPtr != NULL) { //If list has been initialized
         node_t* curPtr = listPtr -> headPtr; //curPtr = list's headPtr
@@ -66,6 +89,12 @@ void traverseStack(const dbl_linked_list_t* listPtr) {
     }
 }
 
+
+/* dequeueNode: initializes the list
+ * Parameters:
+ *    listPtr - pointer to the list
+ * Returns: a pointer to the item dequeued
+ */
 node_t* dequeueNode(dbl_linked_list_t* listPtr) {
     if(listPtr != NULL && listPtr -> headPtr != NULL) { //If the list is not empty and it was initialized
         listPtr -> count--; //A. Decriment count
@@ -93,6 +122,12 @@ node_t* dequeueNode(dbl_linked_list_t* listPtr) {
         return NULL; //Return NULL
 }
 
+
+/* traverseQueue: prints items in the dynamically linked list as if it were a queue
+ * Parameters:
+ *    listPtr - pointer to the list
+ * Returns: nothing 
+ */
 void traverseQueue(const dbl_linked_list_t* listPtr) {
     if (listPtr != NULL) { //If list has been initialized
         node_t* curPtr = listPtr -> tailPtr; //curPtr = list's tailPtr
@@ -101,11 +136,14 @@ void traverseQueue(const dbl_linked_list_t* listPtr) {
             curPtr = curPtr -> prevPtr; //Update curPtr to point to the next node
         }
     }
-
-    else
-        printf("Error: traverseQueue function was passed a NULL value"); //error message for debugging
 }
 
+
+/* deleteList: Deletes the doubly linked list
+ * Parameters:
+ *    listPtr - pointer to the list
+ * Returns: nothing 
+ */
 void deleteList(dbl_linked_list_t* listPtr) {
     if (listPtr != NULL && listPtr -> headPtr != NULL) { //If the list exists and is not empty
         node_t* curPtr = listPtr -> headPtr; //curPtr = the list's headPtr
