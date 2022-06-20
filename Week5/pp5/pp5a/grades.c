@@ -22,9 +22,9 @@ int main() {
    // ADD CODE HERE TO get the grades
    i = 0;
 
-   printf("Enter in your grades now, seperated by an enter:\n"); //Give user instructions for entering grades
 
    while (i < count) { //User populates grades array until it is full
+      printf("Enter grade: ");
       scanf( "%lf", &grades[i]);
       i++;
    }
