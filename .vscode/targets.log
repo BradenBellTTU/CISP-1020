@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jun 20 15:53:53 2022
+# Make data base, printed on Mon Jun 20 20:29:25 2022
 
 # Variables
 
@@ -67,7 +67,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-5805567d-b8b5-4dc9-af2f-66090b97f775.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-781023d9-24e8-4934-870c-79592ee7e452.sock
 # environment
 VSCODE_CWD = /home/braden
 # environment
@@ -79,7 +79,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/Minty:@/tmp/.ICE-unix/4086,unix/Minty:/tmp/.ICE-unix/4086
+SESSION_MANAGER = local/Minty:@/tmp/.ICE-unix/4120,unix/Minty:/tmp/.ICE-unix/4120
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -95,7 +95,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 528225
+GIO_LAUNCHED_DESKTOP_FILE_PID = 12770
 # automatic
 %F = $(notdir $%)
 # environment
@@ -111,7 +111,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 4157
+SSH_AGENT_PID = 4191
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -197,6 +197,7 @@ LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # automatic
+ 
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
@@ -213,9 +214,8 @@ DERBY_HOME = /usr/lib/jvm/java-17-oracle/db
 # environment
 LANG = C
 # environment
-VSCODE_PID = 528225
+VSCODE_PID = 12770
 # variable set hash-table stats:
- 
 # Load=101/1024=10%, Rehash=0, Collisions=6/123=5%
 
 # Pattern-specific Variable Values
@@ -282,6 +282,6 @@ GNUmakefile:
 # strcache performance: lookups = 21 / hit rate = 14%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=1/21=5%
-# Finished Make data base on Mon Jun 20 15:53:53 2022
+# Finished Make data base on Mon Jun 20 20:29:25 2022
 
  
