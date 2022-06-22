@@ -159,3 +159,54 @@ void deleteList(dbl_linked_list_t* listPtr) {
 
     }
 }
+
+
+/* findNode: Searches the list for nodes with a specified key 
+ * Parameters:
+ *    listPtr - pointer to the list
+ *    key - integer to find
+ * Returns: a pointer to the node with the key stored in it or NULL if none are found
+ */
+node_t* findNode(dbl_linked_list_t* listPtr, int key) {
+    node_t* curPtr;
+    for (curPtr = listPtr -> headPtr; curPtr != NULL; curPtr = curPtr -> nextPtr) {
+        if (curPtr -> i == key) {
+            return curPtr;
+        }
+    }
+    return NULL;
+}
+
+
+/* removeNode: Removes a node from the list
+ * Parameters:
+ *    listPtr - pointer to the list
+ *    nodePtr - a pointer to the node to be deleted
+ * Returns: nothing 
+ */
+void removeNode(dbl_linked_list_t* listPtr, node_t* nodePtr) {
+    //HEAD CASE
+    if (nodePtr == listPtr -> headPtr) { //If nodePtr poins to the head of the list
+        listPtr -> headPtr = nodePtr -> nextPtr; 
+        if(listPtr -> headPtr != NULL) {//Didn't remove last node in the list
+            listPtr -> headPtr -> prevPtr = NULL; //Since the head of the node doesn't haev a node before it
+        }
+
+        else { //headPtr is NULL so remove the last node in the list which is now empty
+            listPtr -> tailPtr = NULL;
+        }
+    } 
+
+    else if (nodePtr == listPtr -> tailPtr) {
+        listPtr -> tailPtr = nodePtr -> prevPtr;
+        listPtr -> tailPtr -> nextPtr = NULL;
+    }
+
+    else {
+        nodePtr -> prevPtr = nodePtr -> nextPtr;
+        nodePtr -> nextPtr = nodePtr -> prevPtr;
+    }
+
+    listPtr -> count--;
+    dealloc(nodePtr);
+}

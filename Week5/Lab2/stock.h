@@ -10,6 +10,7 @@ typedef struct date_t {
 
 
 #define MAX_TICKER_LENGTH 6
+
 typedef struct stock_t {
    char ticker[MAX_TICKER_LENGTH];
    date_t date; // date bought
@@ -17,11 +18,7 @@ typedef struct stock_t {
    double pricePerShare;
 } stock_t;
 
-void report();
-
-void buy();
-
-void sell();
+void printStock();
 
 
 #endif
