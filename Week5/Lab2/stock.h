@@ -1,6 +1,9 @@
 #ifndef STOCK_H
 #define STOCK_H
 
+#include <dirent.h>
+#include <string.h>
+
 typedef struct date_t {
    int month, day, year;
 } date_t;
@@ -14,7 +17,11 @@ typedef struct stock_t {
    double pricePerShare;
 } stock_t;
 
+void report();
 
+void buy();
+
+void sell();
 
 
 #endif

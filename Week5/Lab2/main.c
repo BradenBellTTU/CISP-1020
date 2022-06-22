@@ -19,7 +19,7 @@ int main() {
             break;
 
         case 1:
-            printf("Report placeholder\n");
+            report();
             break;
 
         case 2:
