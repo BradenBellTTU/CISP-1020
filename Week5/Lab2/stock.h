@@ -18,7 +18,7 @@ typedef struct stock_t {
    double pricePerShare;
 } stock_t;
 
-void printStock();
+void printStock(stock_t);
 
 
 #endif

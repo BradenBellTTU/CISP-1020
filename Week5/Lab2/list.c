@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
+#include "stock.h"
 
 /* createList: initializes the doubly linked list
  * Parameters:
@@ -83,7 +84,7 @@ void traverseStack(const dbl_linked_list_t* listPtr) {
     if (listPtr != NULL) { //If list has been initialized
         node_t* curPtr = listPtr -> headPtr; //curPtr = list's headPtr
         while(curPtr != NULL) { //While curPtr isn't NULL
-            printf("%d ", curPtr -> i); //Print curPtr's data
+            printStock (curPtr -> i); //Print curPtr's data
             curPtr = curPtr -> nextPtr; //Update curPtr to point to the next node
         }
     }
@@ -132,7 +133,8 @@ void traverseQueue(const dbl_linked_list_t* listPtr) {
     if (listPtr != NULL) { //If list has been initialized
         node_t* curPtr = listPtr -> tailPtr; //curPtr = list's tailPtr
         while(curPtr != NULL) { //While curPtr isn't NULL
-            printf("%d ", curPtr -> i); //Print curPtr's data
+            printStock(curPtr -> i);
+            //printf("%d ", curPtr -> i); //Print curPtr's data
             curPtr = curPtr -> prevPtr; //Update curPtr to point to the next node
         }
     }
@@ -170,7 +172,7 @@ void deleteList(dbl_linked_list_t* listPtr) {
 node_t* findNode(dbl_linked_list_t* listPtr, int key) {
     node_t* curPtr;
     for (curPtr = listPtr -> headPtr; curPtr != NULL; curPtr = curPtr -> nextPtr) {
-        if (curPtr -> i == key) {
+        if ((curPtr -> i.numShares) == key) {
             return curPtr;
         }
     }
@@ -208,5 +210,5 @@ void removeNode(dbl_linked_list_t* listPtr, node_t* nodePtr) {
     }
 
     listPtr -> count--;
-    dealloc(nodePtr);
+    free(nodePtr);
 }

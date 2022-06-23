@@ -1,9 +1,9 @@
 #ifndef DATE_H
 #define DATE_H
 
-typedef struct date_t {
-   int month, day, year;
-} date_t;
+#include <stdlib.h>
+#include <stdio.h>
 
+void setToday(date_t);
 
 #endif
