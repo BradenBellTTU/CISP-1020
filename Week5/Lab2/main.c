@@ -101,11 +101,11 @@ void buy() {
     FILE* outFileStream;
     char tempString[MAX_STR_LEN];
 
-    printf("Enter stock ticker symbol: ");
+    printf("\tEnter stock ticker symbol: ");
     scanf("%s", stockVar.ticker);
-    printf("Enter number of shares: ");
+    printf("\tEnter number of shares: ");
     scanf("%d", &stockVar.numShares);
-    printf("Enter stock price: ");
+    printf("\tEnter stock price: ");
     scanf("%lf", &stockVar.pricePerShare);
    // printf("%d", stockVar.date.year);
     stockVar.date = setToday(stockVar.date);
@@ -122,7 +122,7 @@ void buy() {
         fwrite(&stockVar, sizeof(stock_t), 1, outFileStream);
     }
 
-    printf("%d shares of %s purchased at $%f per share.\n", stockVar.numShares, stockVar.ticker, stockVar.pricePerShare);
+    printf("\t%d shares of %s purchased at $%f per share.\n", stockVar.numShares, stockVar.ticker, stockVar.pricePerShare);
     fclose(outFileStream);
     
 }
@@ -137,7 +137,7 @@ int sell() {
 
     createList(&list);
     //printf("\nList made\n");
-    printf("Enter stock ticer symbol: ");
+    printf("\tEnter stock ticer symbol: ");
     scanf("%s", tickerSymbol);//get ticker symbol: eg APPL
     toUpperCase(tickerSymbol); //uppercase symbol and 
     strcpy(tempString, tickerSymbol);
@@ -147,7 +147,7 @@ int sell() {
     inFileStream = fopen(tickerSymbol, "rb");//open that file
     //printf("\nFile opened\n");
     if (inFileStream == NULL) {//if file open failed
-        printf("Error: File for stock does not exist.\n");//error message
+        printf("\tError: File for stock does not exist.\n");//error message
         return 0; //return to main menu
     }
     //total = read from file, count total, and fill up list l (FILE* in, &dbl_linked_list list)
@@ -166,13 +166,13 @@ int sell() {
 
     //traverseQueue(&list);
     //printf("\nQueue traversed\n");
-    printf("You own %d %s shares.\n", totalStock, tempString);//print total and 
-    printf("Enter number of shares: "); //get how many user wants
+    printf("\tYou own %d %s shares.\n", totalStock, tempString);//print total and 
+    printf("\tEnter number of shares: "); //get how many user wants
     scanf("%d", &desiredStocks);
 
 
     if (desiredStocks > totalStock) {//if they want too many then return an error message and return to main menu
-        printf("Error: not enough stocks to sell\n");
+        printf("\tError: not enough stocks to sell\n");
         return 0;
     }
 
