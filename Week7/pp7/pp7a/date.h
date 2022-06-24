@@ -9,8 +9,6 @@ JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER };
 
 
 
-
-
 class Date
 {
 public:
@@ -19,10 +17,18 @@ public:
     static const int MIN_YEAR;
     static const int MIN_DAY;
     void setYear(int);
-    int getYear() const;
+    int getYear() const {return year;}
+    void setMonth(int);
+    int getMonth() const {return month;}
+    void setDay(int);
+    int getDay() const {return day;}
+    void setDate(int, int, int);
+    void printDate() const;
 private:
+    int daysInMonth() const;
     int month; // 0 = January
     int day;
     int year;
 };
+
 #endif

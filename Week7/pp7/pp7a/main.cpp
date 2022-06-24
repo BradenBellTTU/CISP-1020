@@ -11,12 +11,13 @@ int main(int argc, char **argv)
     Date d1;
     cout << "Minimum year: " << Date::MIN_YEAR << endl;
     //d1.month = -5;
-    /*
+    
     // test setYear, getYear
     d1.setYear(1999);
     cout << "d1 year: " << d1.getYear() << endl; // 1999
     d1.setYear(-5); // shoulld set to min year  = 0
     cout << "d1 year: " << d1.getYear() << endl; // 0
+    
     
     // test printDate and other set/get functions
     d1.setMonth(DECEMBER);
@@ -29,7 +30,7 @@ int main(int argc, char **argv)
     cout << "d1: ";  d1.printDate();    cout << endl;
     d1.setDate(-1, -1, -1); // test invalid everything
     cout << "d1: ";  d1.printDate();    cout << endl;
-    
+    /*
     // test constructors
     Date d2;  // calls default constructor =
     d2 = Date( ); // also calls default constructor
@@ -44,7 +45,8 @@ int main(int argc, char **argv)
     cout << "d5: ";  d5.printDate(); cout << endl;
     Date d6( d5 ); // calls copy constructor
     cout << "d6: ";  d6.printDate(); cout << endl;
-/* End of code to test 7a
+    */
+    //End of code to test 7a
 
 /*  The code below is for PP 7b  
     // test destructor  
