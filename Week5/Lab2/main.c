@@ -176,27 +176,42 @@ int sell() {
         return 0;
     }
 
-    //traverseQueueAndSell(&list, nodePtr, desiredStocks, tickerSymbol);
-    
-    while(soldStock < desiredStocks) {
+    traverseQueueAndSell(&list, nodePtr, desiredStocks, tickerSymbol);
+   
+   
+   /* while(soldStock < desiredStocks) {
         if(desiredStocks < nodePtr -> i.numShares) {//if desiredStocks < #in node
+            printf("\nCase 1\n");
             nodePtr->i.numShares--;//decriment # in the node
+            soldStock++;
             //done
         }
-        //if desiredStocks == #in the node
-            //pop node
-            //deallocate the node
+        else if(desiredStocks == nodePtr->i.numShares){//if desiredStocks == #in the node
+            printf("\nCase 2\n");
+            nodePtr = dequeueNode(&list);//dequeue node
+            free(nodePtr);//deallocate the node
+            soldStock++;
             //done
-
-        //if desiredStocks > #in the node
+        }
+        
+        else if(desiredStocks > nodePtr->i.numShares) {//if desiredStocks > #in the node
+            printf("\nCase 3\n");
             //decriment and pop if needed
+            soldStock++;
+        }
 
-        //if the list isn't empty
+        
+        if(list.headPtr != NULL){//if the list isn't empty
             //write list back to file - put that function in list files
-            //deleteList(&l);
-        //else
-            //remove(filename);
-    }
+            //deleteList(&list);
+        }
+        
+        else {
+            //remove(tickerSymbol);
+        }
+        
+    }*/
+    //traverseQueue(&list);
     return 1;
 }
 

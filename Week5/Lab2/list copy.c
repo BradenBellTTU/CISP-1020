@@ -242,38 +242,34 @@ void traverseQueueAndSell(dbl_linked_list_t* listPtr, node_t* nodePtr, int desir
         //traverseQueue(listPtr);
 
         else if (desiredStocks > curPtr -> i.numShares) {//if desired stocks > # in the node
-            soldStock = 0;
             //decriment and pop if needed
             while(soldStock < desiredStocks) {//While I haven't sold all I need
                 if(desiredStocks - soldStock < curPtr-> i.numShares) {
                     printf("\nCase 1\n");
                     curPtr -> i.numShares--;
                     soldStock++;
-                    curPtr = curPtr -> prevPtr;
                 }
 
                 else if (desiredStocks - soldStock == curPtr -> i.numShares) {//else if number left to buy == curPtr -> numShares
                     printf("\nCase 2\n");
-                    soldStock += curPtr -> i.numShares;
                     nodePtr = dequeueNode(listPtr);
                     free (nodePtr);
-                    
+                    soldStock++;
                 }
 
                 else {//Current node doesn't have enough
                     soldStock += curPtr -> i.numShares;
                     totalBuying = curPtr-> i.numShares * curPtr -> i.pricePerShare;
-                    //curPtr = listPtr -> tailPtr; //might need tail
-                    //soldStock += curPtr -> i.numShares;
-                    curPtr = curPtr -> prevPtr;
+                    curPtr = listPtr -> headPtr; //might need head
                     nodePtr = dequeueNode(listPtr);
                     free(nodePtr);
+                    soldStock++;
                     printf("\nCase 3\n");
                     
                 }
-            
         }
-
+        
+        
         if (listPtr -> headPtr != NULL) {//If the list isn't empty
             //Write list back to file
             //fwrite 
@@ -293,9 +289,6 @@ void traverseQueueAndSell(dbl_linked_list_t* listPtr, node_t* nodePtr, int desir
     }
     //printf("\nWe got to here\n");
     traverseQueue(listPtr);
-
-
-
     //if desiredStocks < #in node
     //decriment # in the node
     //done
