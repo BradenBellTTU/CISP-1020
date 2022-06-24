@@ -214,14 +214,22 @@ void removeNode(dbl_linked_list_t* listPtr, node_t* nodePtr) {
     free(nodePtr);
 }
 
-//pre-condition: list has enough stocks to sell
+/* traverseQueueAndSell: traverses the list queue and sells stocks indicated by user
+ * Parameters:
+ *    listPtr - pointer to the list
+ *    nodePtr - a pointer to the node to be deleted
+ *    desiredStocks - the number of stocks to sell
+ *    tickerSymbol - the name of the stock.bin file
+ * Returns: nothing 
+ * Pre-condition: list has enough stocks to sell
+ */
 void traverseQueueAndSell(dbl_linked_list_t* listPtr, node_t* nodePtr, int desiredStocks, char* tickerSymbol) {
     FILE* outFileStream;
     int soldStock = 0;
     double costToSell = 0;
     double totalBuying = 0;
 
-    printf("\tEnter stock price: ");
+    printf("Enter stock price: ");
     scanf("%lf", &costToSell);
     if (listPtr != NULL) { //If list has been initialized
     node_t* curPtr = listPtr -> tailPtr; //curPtr = list's tailPtr
@@ -293,25 +301,23 @@ void traverseQueueAndSell(dbl_linked_list_t* listPtr, node_t* nodePtr, int desir
     }
 
     else {
-        //debug statement
-        //printf("\nRemoving file...\n");
-        remove(tickerSymbol);
+        remove(tickerSymbol);//Remove file
     }
-    traverseQueue(listPtr);
+
 
     costToSell = costToSell * desiredStocks;
-    printf("\tShares sold: $%4.2f\n", costToSell);
-    printf("\tShares bought: $%4.2f\n", totalBuying);
+    printf("Shares sold: $%4.2f\n", costToSell);
+    printf("Shares bought: $%4.2f\n", totalBuying);
     if (totalBuying < costToSell) {
-        printf("\tGain: $%4.2f\n", (totalBuying - costToSell) * -1);
+        printf("Gain: $%4.2f\n", (totalBuying - costToSell) * -1);
     }
 
     else {
-        printf("\tLoss: $%4.2f\n", totalBuying - costToSell);
+        printf("Loss: $%4.2f\n", totalBuying - costToSell);
     }
 
     deleteList(listPtr);
-}
+    }
 }
 
 
