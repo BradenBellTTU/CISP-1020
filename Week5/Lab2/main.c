@@ -4,13 +4,15 @@
 #include "node.h"
 #include "stock.h"
 #include "date.h"
+#include <ctype.h>
 
 const int MAX_STR_LEN = 256;
 
 void report();
 void buy();
 int sell();
-void printBin();
+void readBin(FILE*, char[], int);
+void toUpperCase(char[]);
 
 int main() {
     int usrMenuSelect = 0;
@@ -34,7 +36,7 @@ int main() {
                 break;
 
             case 2:
-                printf("Buy placeholder\n");
+                buy();
                 break;
 
             case 3:
@@ -50,62 +52,86 @@ int main() {
 }
 
 
-
-
 void report() {
     DIR* dirPtr;
     struct dirent* dirEntry;
     dirPtr = opendir(".");
-    //struct dirent* readdir(dirPtr);
+    char tempString[MAX_STR_LEN], stockChoice[5];
+    int totalStock = 0;
+    FILE* inFileStream;
+    
 
-    char tempString[MAX_STR_LEN];
-
-
+    stock_t stockVar;
+    
+    printf("\tStocks Owned\n\t-----------\n");
     while( (dirEntry = readdir( dirPtr )) != NULL) {
+
         if ( strstr(dirEntry->d_name, ".bin") != NULL) { //Check for .bin files
             strncpy(tempString, dirEntry->d_name, strlen(dirEntry->d_name) - 4); //remove .bin and store it in tempString
-            //printf("Stocks Owned\n--------\n");
-            printf("%s\n", tempString); //Print file names to console
-            //read that bin and count total and print total
-            printBin(tempString);
 
-
+           inFileStream = fopen(dirEntry -> d_name, "rb");
+           if (inFileStream != NULL) {
+            readBin(inFileStream, tempString, 1);
+           }
         }
+        totalStock = 0;
+        strcpy(tempString, "");
     }
+    fclose(inFileStream);
 
-    closedir(dirPtr);
     //read what they pick and print the stocks from that file
+    printf("Enter stock ticker symbol: ");            
+    scanf("%s", stockChoice);
+    strcpy(tempString, stockChoice);
+    strcat(tempString, ".bin");
+    inFileStream = fopen(tempString, "rb");
+    if (inFileStream != NULL) {
+        printf("\n\tTicker\tPurchase Date\tShares\tPrice Per Share\n");
+        printf("\t---------------------------------------------------\n");
+        readBin(inFileStream, stockChoice, 2);
+        printf("\n");
+    }
+    totalStock = 0;
+    strcpy(tempString, "");
 }
 
 
 void buy() {
-    stock_t s;
+    stock_t stockVar;
     FILE* outFileStream;
+    char tempString[MAX_STR_LEN];
 
     printf("Enter stock ticker symbol: ");
-    scanf("%s", s.ticker);
+    scanf("%s", stockVar.ticker);
     printf("Enter number of shares: ");
-    scanf("%d", &s.numShares);
-    printf("%f", s.pricePerShare);
-    setToday(s.date);
+    scanf("%d", &stockVar.numShares);
+    printf("Enter stock price: ");
+    scanf("%lf", &stockVar.pricePerShare);
+   // printf("%d", stockVar.date.year);
+    stockVar.date = setToday(stockVar.date);
+    //printf("%d", stockVar.date.year);
 
+    strcpy(tempString, stockVar.ticker);
+    strcat(tempString, ".bin");
 
-    outFileStream = fopen(s.ticker, "a");
+    outFileStream = fopen(tempString, "a");
     
     
-    //fwrite to write s
-    
+    //fwrite to write stockVar
+    if (outFileStream != NULL) {
+        fwrite(&stockVar, sizeof(stock_t), 1, outFileStream);
+    }
 
-    printf("%d shares of %s purchased at $%f per share.\n", s.numShares, s.ticker, s.pricePerShare);
+    printf("%d shares of %s purchased at $%f per share.\n", stockVar.numShares, stockVar.ticker, stockVar.pricePerShare);
     fclose(outFileStream);
     
 }
 
 int sell() {
-    dbl_linked_list_t l;
-    char tickerSymbol[256];
+    dbl_linked_list_t list;
+    char tickerSymbol[MAX_STR_LEN];
     FILE* inFileStream;
-    int desiredStocks = 0, total = 0;
+    int desiredStocks = 0, totalStocks = 0;
 
 
     scanf("%s", tickerSymbol);//get ticker symbol: eg APPL
@@ -115,16 +141,19 @@ int sell() {
     
     inFileStream = fopen(tickerSymbol, "rb");//open that file
     if (inFileStream == NULL) {//if file open failed
-        printf("Error: File does not exist.\n");//error message
+        printf("Error: File for stock does not exist.\n");//error message
         return 0;
     }
     //total = read from file, count total, and fill up list l (FILE* in, &dbl_linked_list l)
+
+    //HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     //print total and 
     printf("Enter number of shares: "); //get how many user wants
-    scanf("%d", desiredStocks);
+    scanf("%d", &desiredStocks);
 
 
-    if (desiredStocks > total) {//if they want too many then return an error message and return to main menu
+    if (desiredStocks > totalStocks) {//if they want too many then return an error message and return to main menu
         printf("Error: not enough stocks to sell\n");
         return 0;
     }
@@ -146,28 +175,30 @@ int sell() {
         //deleteList(&l);
     //else
         //remove(filename);
+
+    return 1;
 }
 
 
-//Need help!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-void printBin(char* fileNameIn) {
-    char fileName[256];
-    strcpy(fileName, fileNameIn);
-    strcat(fileName, ".bin");
-    FILE* inFileStream;
 
-    stock_t testVar;
-    inFileStream = fopen(fileName, "rb");
+void readBin(FILE* inFileStream, char* fileNameIn, int Case) {
+    stock_t stockVar;
+    int totalStock = 0;
     if (inFileStream != NULL) {
-        fread(&testVar, sizeof(stock_t), 1, inFileStream);
-        fclose(inFileStream);
-    }
+        fread(&stockVar, sizeof(stock_t), 1, inFileStream);
+        while(!feof(inFileStream)) {
+            if(Case == 2) {
+                printStock(stockVar);
+            }
+            totalStock += stockVar.numShares;
+            fread(&stockVar, sizeof(stock_t), 1, inFileStream);
 
-    
-    printf("\t%d\n", testVar.numShares);
-    
-    
-    
+            
+        }
+        if (Case == 1) {
+            printf("\t%s\t%3d\n", fileNameIn, totalStock);
+        }
+    }
 
 }
 

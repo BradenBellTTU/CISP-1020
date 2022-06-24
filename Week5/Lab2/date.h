@@ -3,7 +3,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include "stock.h"
 
-void setToday(date_t);
+date_t setToday(date_t);
 
 #endif
