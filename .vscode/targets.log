@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun 23 13:55:53 2022
+# Make data base, printed on Thu Jun 23 23:20:36 2022
 
 # Variables
 
@@ -67,7 +65,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-63c51be0-ac16-4a8f-8632-8868049ee468.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-de84c99d-1354-402a-ab81-8330cfc5fea8.sock
 # environment
 VSCODE_CWD = /home/braden
 # environment
@@ -95,7 +93,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 9179
+GIO_LAUNCHED_DESKTOP_FILE_PID = 205290
 # automatic
 %F = $(notdir $%)
 # environment
@@ -213,7 +211,7 @@ DERBY_HOME = /usr/lib/jvm/java-17-oracle/db
 # environment
 LANG = C
 # environment
-VSCODE_PID = 9179
+VSCODE_PID = 205290
 # variable set hash-table stats:
 # Load=101/1024=10%, Rehash=0, Collisions=6/123=5%
 
@@ -242,7 +240,6 @@ all:
 
 # Not a target:
 Makefile:
- 
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
@@ -282,6 +279,8 @@ GNUmakefile:
 # strcache performance: lookups = 22 / hit rate = 13%
 # hash-table stats:
 # Load=19/8192=0%, Rehash=0, Collisions=1/22=5%
-# Finished Make data base on Thu Jun 23 13:55:53 2022
+# Finished Make data base on Thu Jun 23 23:20:36 2022
 
  
+make: *** No rule to make target 'all'.  Stop.
+
