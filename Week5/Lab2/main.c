@@ -178,7 +178,7 @@ int sell() {
 
     traverseQueueAndSell(&list, nodePtr, desiredStocks, tickerSymbol);
    
-   
+    deleteList(&list);
    /* while(soldStock < desiredStocks) {
         if(desiredStocks < nodePtr -> i.numShares) {//if desiredStocks < #in node
             printf("\nCase 1\n");

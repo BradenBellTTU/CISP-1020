@@ -220,11 +220,14 @@ void traverseQueueAndSell(dbl_linked_list_t* listPtr, node_t* nodePtr, int desir
     double costToSell = 0;
     double totalBuying = 0;
 
+    printf("Enter stock price: ");
+    scanf("%lf", &costToSell);
     if (listPtr != NULL) { //If list has been initialized
     node_t* curPtr = listPtr -> tailPtr; //curPtr = list's tailPtr
 
         if (desiredStocks < curPtr -> i.numShares) {//if desiredStocks < # in node
             while(soldStock < desiredStocks) {
+            totalBuying = curPtr-> i.numShares * curPtr-> i.pricePerShare;
             curPtr -> i.numShares--;//Decriment # in node
             soldStock++;
             }
@@ -232,6 +235,7 @@ void traverseQueueAndSell(dbl_linked_list_t* listPtr, node_t* nodePtr, int desir
 
         else if (desiredStocks == curPtr -> i.numShares) {//If desiredStocks == #in the node
             while(soldStock < desiredStocks) {
+            totalBuying = curPtr-> i.numShares * curPtr-> i.pricePerShare;
             soldStock += curPtr -> i.numShares;
             nodePtr = dequeueNode( listPtr );//dequeue node
             free(nodePtr);//deallocate the node
@@ -247,17 +251,18 @@ void traverseQueueAndSell(dbl_linked_list_t* listPtr, node_t* nodePtr, int desir
             while(soldStock < desiredStocks) {//While I haven't sold all I need
                 if(desiredStocks - soldStock < curPtr-> i.numShares) {
                     printf("\nCase 1\n");
+                    totalBuying = curPtr-> i.numShares * curPtr-> i.pricePerShare;
                     curPtr -> i.numShares--;
                     soldStock++;
-                    curPtr = curPtr -> prevPtr;
+                    //curPtr = curPtr -> prevPtr;
                 }
 
                 else if (desiredStocks - soldStock == curPtr -> i.numShares) {//else if number left to buy == curPtr -> numShares
                     printf("\nCase 2\n");
+                    totalBuying = curPtr-> i.numShares * curPtr-> i.pricePerShare;
                     soldStock += curPtr -> i.numShares;
                     nodePtr = dequeueNode(listPtr);
                     free (nodePtr);
-                    
                 }
 
                 else {//Current node doesn't have enough
@@ -274,44 +279,62 @@ void traverseQueueAndSell(dbl_linked_list_t* listPtr, node_t* nodePtr, int desir
             
         }
 
-        if (listPtr -> headPtr != NULL) {//If the list isn't empty
-            //Write list back to file
-            //fwrite 
 
-
-        }
-
-        else {
-            //debug statement
-            printf("\nRemoving file...\n");
-            //remove(tickerSymbol);
-        }
 
         //printf("%d ", curPtr -> i); //Print curPtr's data
         curPtr = curPtr -> prevPtr; //Update curPtr to point to the next node
         
     }
     //printf("\nWe got to here\n");
+
+    if (listPtr -> tailPtr != NULL) {//If the list isn't empty
+        writeListToFile(listPtr, tickerSymbol);
+    }
+
+    else {
+        //debug statement
+        printf("\nRemoving file...\n");
+        remove(tickerSymbol);
+    }
     traverseQueue(listPtr);
 
+    costToSell = costToSell * desiredStocks;
+    printf("\tShares sold: $%4.2f\n", totalBuying);
+    printf("\tShares bought: $%4.2f\n", costToSell);
+    if (totalBuying > costToSell) {
+        printf("\tGain: $%4.2f\n", totalBuying - costToSell);
+    }
 
-
-    //if desiredStocks < #in node
-    //decriment # in the node
-    //done
-
-    //if desiredStocks == #in the node
-        //pop node
-        //deallocate the node
-        //done
-
-    //if desiredStocks > #in the node
-        //decriment and pop if needed
-
-    //if the list isn't empty
-        //write list back to file - put that function in list files
-        //deleteList(&l);
-    //else
-        //remove(filename);
+    else {
+        printf("\tLoss: $%4.2f\n", totalBuying - costToSell);
+    }
 }
+}
+
+
+
+void writeListToFile(dbl_linked_list_t* listPtr, char* tickerSymbol) {
+        stock_t stockVar;
+        FILE* outFileStream;
+        outFileStream = fopen(tickerSymbol, "w");
+        if (listPtr != NULL) { //If list has been initialized
+            node_t* curPtr = listPtr -> tailPtr; //curPtr = list's tailPtr
+            
+            while(curPtr != NULL) { //While curPtr isn't NULL
+                if(outFileStream != NULL) {
+                    stockVar = curPtr -> i;
+                    fwrite(&stockVar, sizeof(stock_t), 1, outFileStream);
+                    printf("\nFile write\n");
+                }
+
+                else {
+                    printf("\nOut file stream is NULL\n");
+                }
+                //printf("%d ", curPtr -> i); //Print curPtr's data
+                curPtr = curPtr -> prevPtr; //Update curPtr to point to the next node
+                
+        }
+        fclose(outFileStream);
+
+    }
 }

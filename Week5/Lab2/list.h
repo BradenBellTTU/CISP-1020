@@ -1,6 +1,6 @@
 #ifndef LIST_H
 #define LIST_H
-
+#include <stdio.h>
 #include "node.h"
 
 typedef struct {
@@ -19,5 +19,6 @@ void traverseQueue(const dbl_linked_list_t*);
 node_t* findNode(dbl_linked_list_t*, int);
 void removeNode(dbl_linked_list_t*, node_t*);
 void traverseQueueAndSell(dbl_linked_list_t*, node_t*, int, char*);
+void writeListToFile(dbl_linked_list_t*, char*);
 
 #endif
