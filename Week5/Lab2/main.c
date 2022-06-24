@@ -40,7 +40,7 @@ int main() {
                 break;
 
             case 3:
-                printf("Sell placeholder\n");
+                sell();
                 break;
 
             default:
@@ -129,53 +129,74 @@ void buy() {
 
 int sell() {
     dbl_linked_list_t list;
-    char tickerSymbol[MAX_STR_LEN];
-    FILE* inFileStream;
-    int desiredStocks = 0, totalStocks = 0;
+    char tickerSymbol[MAX_STR_LEN], tempString[MAX_STR_LEN];
+    FILE* inFileStream, outFileStream;
+    stock_t stockVar;
+    int desiredStocks = 0, totalStock = 0, soldStock = 0, costToSell = 0, totalBuying = 0;
+    node_t* nodePtr;
 
-
+    createList(&list);
+    //printf("\nList made\n");
+    printf("Enter stock ticer symbol: ");
     scanf("%s", tickerSymbol);//get ticker symbol: eg APPL
     toUpperCase(tickerSymbol); //uppercase symbol and 
+    strcpy(tempString, tickerSymbol);
     strcat(tickerSymbol, ".bin"); //strcat ".bin" to the end of it
     
-    
+ 
     inFileStream = fopen(tickerSymbol, "rb");//open that file
+    //printf("\nFile opened\n");
     if (inFileStream == NULL) {//if file open failed
         printf("Error: File for stock does not exist.\n");//error message
-        return 0;
+        return 0; //return to main menu
     }
-    //total = read from file, count total, and fill up list l (FILE* in, &dbl_linked_list l)
+    //total = read from file, count total, and fill up list l (FILE* in, &dbl_linked_list list)
+    fread(&stockVar, sizeof(stock_t), 1, inFileStream);
+    //printf("\nFile read\n");
+    while(!feof(inFileStream)) {
+        totalStock += stockVar.numShares;
+       //printf("\nTotal stock incrimented\n");
+        nodePtr = initNode(stockVar);
+        //printf("\nNode initlaized\n");
+        insertNode(&list, nodePtr);
+        //printf("\nNode inserted\n");
+        fread(&stockVar, sizeof(stock_t), 1, inFileStream);
+        //printf("\nFile read\n");
+    }
 
-    //HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    //print total and 
+    //traverseQueue(&list);
+    //printf("\nQueue traversed\n");
+    printf("You own %d %s shares.\n", totalStock, tempString);//print total and 
     printf("Enter number of shares: "); //get how many user wants
     scanf("%d", &desiredStocks);
 
 
-    if (desiredStocks > totalStocks) {//if they want too many then return an error message and return to main menu
+    if (desiredStocks > totalStock) {//if they want too many then return an error message and return to main menu
         printf("Error: not enough stocks to sell\n");
         return 0;
     }
 
-    //desiredStocks < #in node
-        //decriment # in the node
-        //done
+    //traverseQueueAndSell(&list, nodePtr, desiredStocks, tickerSymbol);
+    
+    while(soldStock < desiredStocks) {
+        if(desiredStocks < nodePtr -> i.numShares) {//if desiredStocks < #in node
+            nodePtr->i.numShares--;//decriment # in the node
+            //done
+        }
+        //if desiredStocks == #in the node
+            //pop node
+            //deallocate the node
+            //done
 
-    //if desiredStocks == #in the node
-        //pop node
-        //deallocate the node
-        //done
+        //if desiredStocks > #in the node
+            //decriment and pop if needed
 
-    //if desiredStocks > #in the node
-        //decriment and pop if needed
-
-    //if the list isn't empty
-        //write list back to file - put that function in list files
-        //deleteList(&l);
-    //else
-        //remove(filename);
-
+        //if the list isn't empty
+            //write list back to file - put that function in list files
+            //deleteList(&l);
+        //else
+            //remove(filename);
+    }
     return 1;
 }
 
