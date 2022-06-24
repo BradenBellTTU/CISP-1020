@@ -212,3 +212,82 @@ void removeNode(dbl_linked_list_t* listPtr, node_t* nodePtr) {
     listPtr -> count--;
     free(nodePtr);
 }
+
+//pre-condition: list has enough stocks to sell
+void traverseQueueAndSell(dbl_linked_list_t* listPtr, node_t* nodePtr, int desiredStocks, char* tickerSymbol) {
+    FILE* outFileStream;
+    int soldStock = 0;
+    double costToSell = 0;
+    double totalBuying = 0;
+
+    if (listPtr != NULL) { //If list has been initialized
+    node_t* curPtr = listPtr -> tailPtr; //curPtr = list's tailPtr
+
+        if (desiredStocks < curPtr -> i.numShares) {//if desiredStocks < # in node
+            curPtr -> i.numShares--;//Decriment # in node
+        }
+
+        else if (desiredStocks == curPtr -> i.numShares) {//If desiredStocks == #in the node
+            nodePtr = dequeueNode( listPtr );//dequeue node
+            
+            free(nodePtr);//deallocate the node
+        }
+
+        traverseQueue(listPtr);
+
+        /*else if (desiredStocks > curPtr -> i.numShares) {//if desired stocks > # in the node
+            //decriment and pop if needed
+            curPtr -> i.numShares--;
+            soldStock++;
+            while(soldStock < desiredStocks) {//While I haven't sold all I want
+                if(desiredStocks - soldStock < curPtr-> i.numShares) {
+
+                }
+
+                else if () {//else if number left to buy == curPtr -> numShares
+
+                }
+
+                else {//Current node doesn't have enough
+                    soldStock = curPtr -> i.numShares;
+                    totalBuying = curPtr-> i.numShares * curPtr -> i.pricePerShare;
+                    curPtr = listPtr -> headPtr;
+                    dequeueNode(curPtr);
+                }
+        }*/
+
+        if (listPtr -> headPtr != NULL) {//If the list isn't empty
+            //Write list back to file
+            //fwrite 
+
+
+        }
+
+        else {
+            //debug statement
+            printf("\nRemoving file...\n");
+            //remove(tickerSymbol);
+        }
+
+        //printf("%d ", curPtr -> i); //Print curPtr's data
+        curPtr = curPtr -> prevPtr; //Update curPtr to point to the next node
+    
+    }
+    //if desiredStocks < #in node
+    //decriment # in the node
+    //done
+
+    //if desiredStocks == #in the node
+        //pop node
+        //deallocate the node
+        //done
+
+    //if desiredStocks > #in the node
+        //decriment and pop if needed
+
+    //if the list isn't empty
+        //write list back to file - put that function in list files
+        //deleteList(&l);
+    //else
+        //remove(filename);
+}

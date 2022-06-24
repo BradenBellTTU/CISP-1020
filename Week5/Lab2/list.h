@@ -18,5 +18,6 @@ void traverseStack(const dbl_linked_list_t*);
 void traverseQueue(const dbl_linked_list_t*);
 node_t* findNode(dbl_linked_list_t*, int);
 void removeNode(dbl_linked_list_t*, node_t*);
+void traverseQueueAndSell(dbl_linked_list_t*, node_t*, int, char*);
 
 #endif
