@@ -50,17 +50,20 @@ Date::Date(int mm, int dd, int yyyy) {
 }
 
 Date::Date(int mm, int yyyy) {
+    setDay(1);
     setMonth(mm);
     setYear(yyyy);
 }
 
 Date::Date (int yyyy) {
+    setDay(1);
+    setMonth(1);
     setYear (yyyy);
 }
 
 Date::~Date() {
-    //printDate();
-   //cout << "destroyed\n";
+    printDate();
+   cout << " destroyed\n";
 }
 
 Date operator+ (const Date& d1, const Date& d2) {
@@ -75,8 +78,6 @@ bool operator== (const Date& d1, const Date& d2) {
     else
         return false;
 }
-
-//This would not work. I kept getting the error 
 
 Date Date::operator-( ) const {
     return Date(abs(this->month-6), this->day, this->year);

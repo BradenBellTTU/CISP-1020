@@ -52,10 +52,13 @@ Date::Date(int mm, int dd, int yyyy) {
 Date::Date(int mm, int yyyy) {
     setMonth(mm);
     setYear(yyyy);
+    setDay(1);
 }
 
 Date::Date (int yyyy) {
+    setMonth(JANUARY);
     setYear (yyyy);
+    setDay(1);
 }
 
 
