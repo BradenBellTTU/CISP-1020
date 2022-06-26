@@ -16,6 +16,10 @@ public:
     static const int MAX_MONTH;
     static const int MIN_YEAR;
     static const int MIN_DAY;
+    Date();
+    Date(int, int, int);
+    Date(int, int);
+    Date(int);
     void setYear(int);
     int getYear() const {return year;}
     void setMonth(int);

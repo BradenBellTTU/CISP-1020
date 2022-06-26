@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     cout << "d1: ";  d1.printDate();    cout << endl;
     d1.setDate(-1, -1, -1); // test invalid everything
     cout << "d1: ";  d1.printDate();    cout << endl;
-    /*
+    
     // test constructors
     Date d2;  // calls default constructor =
     d2 = Date( ); // also calls default constructor
@@ -45,7 +45,7 @@ int main(int argc, char **argv)
     cout << "d5: ";  d5.printDate(); cout << endl;
     Date d6( d5 ); // calls copy constructor
     cout << "d6: ";  d6.printDate(); cout << endl;
-    */
+    
     //End of code to test 7a
 
 /*  The code below is for PP 7b  
@@ -79,6 +79,6 @@ int main(int argc, char **argv)
     for( int i = 0; i < 3; i++ ) {
         cout << dates[i] << endl;
     }
-*/
    return 0; 
+   */
 }

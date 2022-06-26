@@ -35,4 +35,27 @@ void Date::printDate() const {
     cout << setfill('0') << setw(2) << (month+1) << '/' << day << '/' << setw(4) << year;
 }
 
+Date::Date() {
+    time_t t = time(NULL);
+    tm* tPtr = localtime(&t);
+    month = tPtr->tm_mon;
+    day = tPtr->tm_mday;
+    year = tPtr->tm_year + 1900;
+}
+
+Date::Date(int mm, int dd, int yyyy) {
+    setMonth(mm);
+    setYear(yyyy);
+    setDay(dd);
+}
+
+Date::Date(int mm, int yyyy) {
+    setMonth(mm);
+    setYear(yyyy);
+}
+
+Date::Date (int yyyy) {
+    setYear (yyyy);
+}
+
 
