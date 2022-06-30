@@ -288,8 +288,6 @@ void traverseQueueAndSell(dbl_linked_list_t* listPtr, node_t* nodePtr, int desir
             
         }
 
-
-
         //printf("%d ", curPtr -> i); //Print curPtr's data
         curPtr = curPtr -> prevPtr; //Update curPtr to point to the next node
         

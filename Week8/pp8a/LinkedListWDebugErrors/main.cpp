@@ -35,6 +35,7 @@ int main() {
 
 		// test stack traversal
 		cout << "Traverse stack: \n";
+		//First error is here
 		list1.traverseStack( );
 
 		// test queue traversal

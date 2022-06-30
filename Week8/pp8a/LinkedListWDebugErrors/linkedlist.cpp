@@ -10,12 +10,32 @@
 
 
 LinkedList::LinkedList() {
-	headPtr = (Node*)&tailPtr;
+	headPtr = NULL;
+	tailPtr = NULL;
 	count = 0;
 }
 
-LinkedList::LinkedList(LinkedList const&) {
-	
+//Write a deep copy constructor
+LinkedList::LinkedList(LinkedList const& l) {
+	// thisPtr goes through this' list, curPtr goes thru l's
+   Node* thisPtr = NULL, *curPtr = l.headPtr; 
+   headPtr = NULL;
+   if ( l.headPtr != NULL ) { //  if there's list to copy
+      curPtr = l.headPtr;
+      headPtr = new Node( *(l.headPtr) );
+      thisPtr = headPtr;
+      curPtr = curPtr->nextPtr;
+      while ( curPtr != NULL ) {
+         thisPtr->nextPtr = new Node( *curPtr );
+         thisPtr->nextPtr->prevPtr = thisPtr;
+         thisPtr = thisPtr->nextPtr;
+         curPtr = curPtr->nextPtr;
+      }
+   }
+   tailPtr = thisPtr;
+   count = l.count;
+
+   //return *this;
 }
 
 
@@ -26,9 +46,15 @@ LinkedList::LinkedList(LinkedList const&) {
  * Returns: nothing
  */
 void LinkedList::insertNode( Node* nodePtr ) {
-   nodePtr->nextPtr = headPtr;
-   headPtr->prevPtr = nodePtr;
-   headPtr = nodePtr;
+   if (headPtr != NULL) {
+	   nodePtr->nextPtr = headPtr;
+	   headPtr->prevPtr = nodePtr;
+	   headPtr = nodePtr;
+	}
+	
+	else {
+		headPtr = tailPtr = nodePtr;
+	}
    count++;
 }
 
@@ -119,13 +145,15 @@ Node* LinkedList::popNode() {
  * Postcondition list altered by node removal
  */
 Node* LinkedList::dequeueNode() {
-   Node* oldPtr = headPtr;
-   if ( tailPtr != NULL ) {
+   Node* oldPtr = tailPtr;
+   if ( tailPtr != NULL ) {//If the list is not empty
       tailPtr = tailPtr->prevPtr;
       if ( tailPtr != NULL ) tailPtr->nextPtr = NULL;
-      count--;
+      else headPtr = NULL;
+	  count--;
       return oldPtr;
    } 
+   
    return NULL;
 }
 

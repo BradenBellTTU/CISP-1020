@@ -19,6 +19,7 @@ public:
    bool isEmpty() const { return headPtr == NULL; }
    LinkedList& operator=( const LinkedList& );
    void deleteList();
+   friend class Node;
 private:
    Node* headPtr;
    Node* tailPtr;

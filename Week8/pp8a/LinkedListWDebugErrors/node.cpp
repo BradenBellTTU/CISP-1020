@@ -17,7 +17,9 @@ Node::Node( const Node& n ) : nextPtr( NULL ) {
 /* 1-arg constructor
  * Parameter  the book data
  */
-Node::Node( const Book& b ) : nextPtr( NULL ), prevPtr(NULL) {}
+Node::Node( const Book& b ) : nextPtr( NULL ), prevPtr(NULL) {
+	setBook(b);
+}
 
 /* setBook sets the Book data values
  * Parameter the book data
